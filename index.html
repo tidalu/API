@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      rel="preload"
+      href="https://fonts.gstatic.com/s/opensans/v40/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsjZ0B4gaVI.woff2"
+      as="font"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      href="https://img.freepik.com/free-photo/red-white-cat-i-white-studio_155003-13189.jpg"
+      as="image"
+    />
+    <link
+      rel="preload"
+      href="https://img.freepik.com/free-photo/selective-focus-closeup-shot-gray-furry-tabby-cat-sitting-wooden-chair_181624-8432.jpg"
+      as="image"
+    />
+    <style>
+      body {
+        font-family: 'Open Sans', sans-serif;
+        margin: 5%;
+      }
+    </style>
+    <title>Pick.le: Pick your pics 🥒</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Pick.le: Pick your pics 🥒</h1>
+      <h2 id="callToAction">Submit your photos of kittehs!</h2>
+      <div id="gallery" style="height: 600px; width: 600px"></div>
+    </div>
+
+    <script>
+      async function loadImages() {
+        const galleryElement = document.getElementById('gallery');
+
+        // TODO: Use the Messaging API to use submitted photos
+        // const response = await fetch("/api/")
+        // TODO: Create a web-based API that matches this expected response
+        const gallery = [
+          {
+            src: 'https://img.freepik.com/free-photo/red-white-cat-i-white-studio_155003-13189.jpg',
+            description: 'Look at this kitteh',
+            alt: 'A kitteh',
+            thumbnailWidth: '200px',
+          },
+          {
+            src: 'https://img.freepik.com/free-photo/selective-focus-closeup-shot-gray-furry-tabby-cat-sitting-wooden-chair_181624-8432.jpg',
+            description: 'Another Kitteh',
+            alt: 'Cutie',
+            thumbnailWidth: '200px',
+          },
+        ];
+
+        gallery.forEach((image) => {
+          const img = document.createElement('img');
+          img.src = image.src;
+          img.alt = image.alt;
+          img.title = image.description;
+          img.style.width = image.thumbnailWidth;
+          img.style.height = 'auto';
+          galleryElement.appendChild(img);
+        });
+      }
+
+      window.onload = loadImages;
+    </script>
+  </body>
+</html>
